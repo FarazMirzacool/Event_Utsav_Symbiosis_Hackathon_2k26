@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Registration - EventUtsav</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="vendor-auth.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="auth-container register-container">
+        <!-- Left Side - Registration Form -->
+        <div class="auth-form register-form">
+            <div class="form-header">
+                <h2>Become a Vendor Partner</h2>
+                <p>Already have an account? <a href="vendor-login.html">Login here</a></p>
+            </div>
+
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <!-- Business Information -->
+                <h3 class="form-section-title">
+                    <i class="fas fa-store"></i>
+                    Business Information
+                </h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="businessName">
+                            <i class="fas fa-building"></i>
+                            Business Name *
+                        </label>
+                        <input 
+                            type="text" 
+                            id="businessName" 
+                            name="businessName" 
+                            placeholder="e.g., Elegant Events"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ownerName">
+                            <i class="fas fa-user-tie"></i>
+                            Owner Name *
+                        </label>
+                        <input 
+                            type="text" 
+                            id="ownerName" 
+                            name="ownerName" 
+                            placeholder="Full name of owner"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="businessDesc">
+                        <i class="fas fa-align-left"></i>
+                        Business Description
+                    </label>
+                    <textarea 
+                        id="businessDesc" 
+                        name="businessDesc" 
+                        rows="3" 
+                        placeholder="Tell us about your business and services..."
+                    ></textarea>
+                </div>
+
+                <!-- Contact Information -->
+                <h3 class="form-section-title">
+                    <i class="fas fa-address-card"></i>
+                    Contact Information
+                </h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email Address *
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your@email.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone"></i>
+                            Phone Number *
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            name="phone" 
+                            placeholder="+91 98765 43210"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Business Address *
+                    </label>
+                    <input 
+                        type="text" 
+                        id="address" 
+                        name="address" 
+                        placeholder="Full address"
+                        required
+                    >
+                </div>
+
+                <!-- Account Security -->
+                <h3 class="form-section-title">
+                    <i class="fas fa-shield-alt"></i>
+                    Account Security
+                </h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Password *
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Create a password"
+                                required
+                            >
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword('password')"></i>
+                        </div>
+                        <small class="password-hint">Minimum 6 characters</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">
+                            <i class="fas fa-lock"></i>
+                            Confirm Password *
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                placeholder="Confirm your password"
+                                required
+                            >
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword('confirmPassword')"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Details -->
+                <h3 class="form-section-title">
+                    <i class="fas fa-list"></i>
+                    Service Details
+                </h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="serviceCategory">
+                            <i class="fas fa-tags"></i>
+                            Service Categories *
+                        </label>
+                        <select id="serviceCategory" name="serviceCategory" multiple size="4" required>
+                            <option value="Decoration">Decoration</option>
+                            <option value="Photography">Photography</option>
+                            <option value="Catering">Catering</option>
+                            <option value="Music">Music/DJ</option>
+                            <option value="Makeup">Makeup/Mehendi</option>
+                            <option value="Anchor">Anchor/Hosting</option>
+                            <option value="Lighting">Lighting/Sound</option>
+                            <option value="Planning">Event Planning</option>
+                        </select>
+                        <small>Hold Ctrl/Cmd to select multiple</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">
+                            <i class="fas fa-calendar-alt"></i>
+                            Years of Experience
+                        </label>
+                        <input 
+                            type="number" 
+                            id="experience" 
+                            name="experience" 
+                            min="0" 
+                            placeholder="e.g., 5"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="gstNumber">
+                        <i class="fas fa-file-invoice"></i>
+                        GST Number (Optional)
+                    </label>
+                    <input 
+                        type="text" 
+                        id="gstNumber" 
+                        name="gstNumber" 
+                        placeholder="27ABCDE1234F1Z5"
+                    >
+                </div>
+
+                <!-- Terms and Conditions -->
+                <div class="form-group terms-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms" required>
+                        <span>I agree to the <a href="#" onclick="showTerms()">Terms & Conditions</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-register" id="registerBtn">
+                    <span>Create Vendor Account</span>
+                    <i class="fas

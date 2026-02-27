@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Dashboard - EventUtsav</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js for analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="vendor.css">
+</head>
+<body>
+    <!-- Notification Bell -->
+    <div class="notification-bell" onclick="toggleNotifications()">
+        <i class="fas fa-bell"></i>
+        <span class="notification-badge" id="notificationBadge">3</span>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div class="notifications-panel" id="notificationsPanel">
+        <div class="notifications-header">
+            <h3>Notifications</h3>
+            <button onclick="markAllAsRead()">Mark all as read</button>
+        </div>
+        <div class="notifications-list" id="notificationsList">
+            <!-- Notifications will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>Event<span>Utsav</span></h2>
+                <p>Vendor Panel</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#dashboard" class="active" onclick="showSection('dashboard')">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#bookings" onclick="showSection('bookings')">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Bookings</span>
+                    <span class="badge" id="pendingBookingsBadge">0</span>
+                </a>
+                <a href="#services" onclick="showSection('services')">
+                    <i class="fas fa-list"></i>
+                    <span>My Services</span>
+                </a>
+                <a href="#earnings" onclick="showSection('earnings')">
+                    <i class="fas fa-rupee-sign"></i>
+                    <span>Earnings</span>
+                </a>
+                <a href="#reviews" onclick="showSection('reviews')">
+                    <i class="fas fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+                <a href="#analytics" onclick="showSection('analytics')">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#settings" onclick="showSection('settings')">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="vendor-info">
+                    <img src="https://ui-avatars.com/api/?name=Elegant+Events&background=8B5CF6&color=fff&size=50" alt="Vendor">
+                    <div>
+                        <h4>Elegant Events</h4>
+                        <p class="verified"><i class="fas fa-check-circle"></i> Verified</p>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="header-title">
+                    <h1>Welcome back, Priya! 👋</h1>
+                    <p>Here's what's happening with your business today</p>
+                </div>
+                <div class="header-actions">
+                    <div class="date-display">
+                        <i class="fas fa-calendar"></i>
+                        <span id="currentDate"></span>
+                    </div>
+                    <button class="btn-primary" onclick="addNewService()">
+                        <i class="fas fa-plus"></i> Add Service
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboardSection" class="section active">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="totalBookings">0</h3>
+                            <p>Total Bookings</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #10B981, #059669);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="pendingBookings">0</h3>
+                            <p>Pending</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="completedBookings">0</h3>
+                            <p>Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #EF4444, #DC2626);">
+                            <i class="fas fa-rupee-sign"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3 id="totalEarnings">₹0</h3>
+                            <p>Total Earnings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Upcoming Bookings -->
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Activity</h3>
+                            <a href="#" onclick="showSection('bookings')">View All</a>
+                        </div>
+                        <div class="activity-list" id="recentActivity">
+                            <!-- Activities will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Upcoming Bookings</h3>
+                            <a href="#" onclick="showSection('bookings')">View All</a>
+                        </div>
+                        <div class="upcoming-list" id="upcomingBookings">
+                            <!-- Upcoming bookings will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="actions-grid">
+                        <button class="action-card" onclick="updateAvailability()">
+                            <i class="fas fa-toggle-on"></i>
+                            <span>Update Availability</span>
+                        </button>
+                        <button class="action-card" onclick="addNewService()">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Add New Service</span>
+                        </button>
+                        <button class="action-card" onclick="viewEarnings()">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>View Earnings</span>
+                        </button>
+                        <button class="action-card" onclick="respondToReviews()">
+                            <i class="fas fa-star"></i>
+                            <span>Respond to Reviews</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookings Section -->
+            <div id="bookingsSection" class="section">
+                <div class="section-header">
+                    <h2>Manage Bookings</h2>
+                    <div class="filter-options">
+                        <select id="bookingFilter" onchange="filterBookings()">
+                            <option value="all">All Bookings</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <input type="date" id="bookingDate" onchange="filterByDate()">
+                    </div>
+                </div>
+                <div class="bookings-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Customer</th>
+                                <th>Service</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Payment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsList">
+                            <!-- Bookings will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div id="servicesSection" class="section">
+                <div class="section-header">
+                    <h2>My Services</h2>
+                    <button class="btn-primary" onclick="addNewService()">
+                        <i class="fas fa-plus"></i> Add New Service
+                    </button>
+                </div>
+                <div class="services-grid" id="servicesList">
+                    <!-- Services will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Earnings Section -->
+            <div id="earningsSection" class="section">
+                <div class="earnings-header">
+                    <h2>Earnings Overview</h2>
+                    <div class="earnings-period">
+                        <select id="earningsPeriod" onchange="updateEarningsChart()">
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="earnings-stats">
+                    <div class="earning-card total">
+                        <p>Total Earnings</p>
+                        <h3 id="totalEarningsAmount">₹0</h3>
+                    </div>
+                    <div class="earning-card pending">
+                        <p>Pending Payouts</p>
+                        <h3 id="pendingPayouts">₹0</h3>
+                    </div>
+                    <div class="earning-card completed">
+                        <p>Completed Orders</p>
+                        <h3 id="completedOrders">0</h3>
+                    </div>
+                    <div class="earning-card avg">
+                        <p>Average per Order</p>
+                        <h3 id="avgOrderValue">₹0</h3>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="earningsChart"></canvas>
+                </div>
+
+                <div class="recent-payments">
+                    <h3>Recent Payments</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Booking ID</th>
+                                <th>Service</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsList">
+                            <!-- Payments will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div id="reviewsSection" class="section">
+                <div class="section-header">
+                    <h2>Customer Reviews</h2>
+                    <div class="rating-summary">
+                        <span class="avg-rating" id="avgRating">4.8</span>
+                        <span class="stars">★★★★★</span>
+                        <span class="total-reviews" id="totalReviews">(0 reviews)</span>
+                    </div>
+                </div>
+
+                <div class="reviews-grid" id="reviewsList">
+                    <!-- Reviews will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analyticsSection" class="section">
+                <h2>Analytics</h2>
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Booking Trends</h3>
+                        <canvas id="bookingTrendsChart"></canvas>
+                    </div>
+                    <div class="analytics-card">
+                        <h3>Revenue by Service</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="analytics-card full-width">
+                        <h3>Customer Demographics</h3>
+                        <canvas id="demographicsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settingsSection" class="section">
+                <h2>Settings</h2>
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h3>Profile Information</h3>
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label>Business Name</label>
+                                <input type="text" id="businessName" value="Elegant Events">
+                            </div>
+                            <div class="form-group">
+                                <label>Owner Name</label>
+                                <input type="text" id="ownerName" value="Priya Sharma">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="businessEmail" value="priya@elegantevents.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" id="businessPhone" value="+91 98765 43210">
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea id="businessAddress">Mumbai, Maharashtra</textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Business Hours</h3>
+                        <div class="business-hours">
+                            <div class="hour-row">
+                                <span>Monday - Friday</span>
+                                <input type="time" value="09:00"> - <input type="time" value="18:00">
+                            </div>
+                            <div class="hour-row">
+                                <span>Saturday</span>
+                                <input type="time" value="10:00"> - <input type="time" value="16:00">
+                            </div>
+                            <div class="hour-row">
+                                <span>Sunday</span>
+                                <input type="text" value="Closed" disabled>
+                            </div>
+                        </div>
+                        <button class="btn-primary" style="margin-top: 20px;">Update Hours</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Payment Settings</h3>
+                        <div class="payment-methods">
+                            <label>
+                                <input type="checkbox" checked> Accept UPI
+                            </label>
+                            <label>
+                                <input type="checkbox" checked> Accept Cards
+                            </label>
+                            <label>
+                                <input type="checkbox" checked> Accept Net Banking
+                            </label>
+                            <label>
+                                <input type="checkbox"> Accept Cash
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>UPI ID</label>
+                            <input type="text" value="elegantevents@okhdfcbank">
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Account</label>
+                            <input type="text" value="XXXX XXXX XXXX 1234">
+                        </div>
+                        <button class="btn-primary">Update Payment Info</button>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Notification Preferences</h3>
+                        <div class="notification-preferences">
+                            <label>
+                                <input type="checkbox" checked> Email Notifications
+                            </label>
+                            <label>
+                                <input type="checkbox" checked> SMS Alerts
+                            </label>
+                            <label>
+                                <input type="checkbox" checked> New Booking Alerts
+                            </label>
+                            <label>
+                                <input type="checkbox" checked> Payment Received
+                            </label>
+                            <label>
+                                <input type="checkbox"> Marketing Updates
+                            </label>
+                        </div>
+                        <button class="btn-primary">Save Preferences</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Service Modal -->
+    <div class="modal" id="addServiceModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addServiceModal')">&times;</span>
+            <h2>Add New Service</h2>
+            <form id="addServiceForm" onsubmit="saveNewService(event)">
+                <div class="form-group">
+                    <label>Service Name</label>
+                    <input type="text" id="newServiceName" required placeholder="e.g., Premium Birthday Decoration">
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="newServiceCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Birthday">Birthday</option>
+                        <option value="Wedding">Wedding</option>
+                        <option value="Anniversary">Anniversary</option>
+                        <option value="Baby Shower">Baby Shower</option>
+                        <option value="Haldi">Haldi</option>
+                        <option value="Mehendi">Mehendi</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="newServiceDesc" required rows="3" placeholder="Describe your service"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Base Price (₹)</label>
+                    <input type="number" id="newServicePrice" required min="0" placeholder="e.g., 5000">
+                </div>
+                <div class="form-group">
+                    <label>Discount (%)</label>
+                    <input type="number" id="newServiceDiscount" min="0" max="100" placeholder="e.g., 20">
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="url" id="newServiceImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <button type="submit" class="btn-submit">Add Service</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Status Modal -->
+    <div class="modal" id="updateStatusModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updateStatusModal')">&times;</span>
+            <h2>Update Booking Status</h2>
+            <div class="booking-details" id="statusBookingDetails">
+                <!-- Details will be loaded here -->
+            </div>
+            <div class="status-options">
+                <button class="status-btn confirm" onclick="updateBookingStatus('confirmed')">
+                    <i class="fas fa-check"></i> Confirm Booking
+                </button>
+                <button class="status-btn pending" onclick="updateBookingStatus('pending')">
+                    <i class="fas fa-clock"></i> Mark Pending
+                </button>
+                <button class="status-btn complete" onclick="updateBookingStatus('completed')">
+                    <i class="fas fa-check-circle"></i> Mark Completed
+                </button>
+                <button class="status-btn cancel" onclick="updateBookingStatus('cancelled')">
+                    <i class="fas fa-times"></i> Cancel Booking
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Availability Modal -->
+    <div class="modal" id="availabilityModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('availabilityModal')">&times;</span>
+            <h2>Update Availability</h2>
+            <div class="availability-calendar" id="availabilityCalendar">
+                <!-- Calendar will be loaded here -->
+            </div>
+            <button class="btn-primary" onclick="saveAvailability()">Save Availability</button>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="vendor.js"></script>
+</body>
+</html>

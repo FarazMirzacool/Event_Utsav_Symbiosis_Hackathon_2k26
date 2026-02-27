@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventUtsav - Your Event Planning Partner</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="interface.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <h1>Event<span>Utsav</span></h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#categories">Categories</a>
+                <a href="#services">Services</a>
+                <a href="#deals">Flash Deals</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="auth-buttons" id="authButtons">
+                <!-- Auth buttons will be dynamically loaded -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Your Celebration Starts Here!</h2>
+        <p>EventUtsav connects you to the best event services in one place - from birthdays to weddings, effortlessly and affordably.</p>
+        <div class="hero-buttons">
+            <a href="#" class="btn btn-primary" onclick="openModal('booking')">Book Now</a>
+            <a href="#categories" class="btn btn-outline">Explore Categories</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="section-title">
+            <h3>Popular Categories</h3>
+        </div>
+        <div class="category-grid" id="categoryGrid">
+            <!-- Categories will be loaded via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Easy Booking Process -->
+    <section class="booking-process">
+        <div class="section-title">
+            <h3>Easy Booking Process</h3>
+        </div>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <i class="fas fa-search"></i>
+                <h4>Choose Decoration</h4>
+                <p>Browse through our wide range of decoration themes and services</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <i class="fas fa-calendar-check"></i>
+                <h4>Book Decoration</h4>
+                <p>Select your date and make a secure booking with advance payment</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <i class="fas fa-magic"></i>
+                <h4>We Decorate</h4>
+                <p>Relax and let our professionals create magic at your event</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 3rem; font-size: 1.2rem; color: var(--gray);">
+            It's that simple! Book your dream decor today with EventUtsav!
+        </p>
+    </section>
+
+    <!-- Explore Decorations -->
+    <section class="explore" id="deals">
+        <div class="section-title">
+            <h3>Explore Decorations</h3>
+        </div>
+        <div class="explore-tabs" id="exploreTabs">
+            <!-- Tabs will be loaded via JavaScript -->
+        </div>
+        <div class="explore-grid" id="exploreGrid">
+            <!-- Decoration cards will be loaded via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Our Speciality -->
+    <section class="speciality">
+        <div class="speciality-grid">
+            <div class="speciality-card">
+                <div class="speciality-header">
+                    <h4>Wedding Collection</h4>
+                    <p>Select your preferred wedding service category</p>
+                </div>
+                <div class="speciality-body">
+                    <div class="speciality-item" onclick="openModal('booking')">
+                        <i class="fas fa-ring"></i>
+                        <span>Pre Wedding</span>
+                        <small>Engagement, Mehendi, Haldi</small>
+                    </div>
+                    <div class="speciality-item" onclick="openModal('booking')">
+                        <i class="fas fa-heart"></i>
+                        <span>Wedding Day</span>
+                        <small>Mandap, Decoration, Lighting</small>
+                    </div>
+                    <div class="speciality-item" onclick="openModal('booking')">
+                        <i class="fas fa-glass-cheers"></i>
+                        <span>Post Wedding</span>
+                        <small>Reception, After Party</small>
+                    </div>
+                </div>
+            </div>
+            <div class="speciality-card">
+                <div class="speciality-header">
+                    <h4>Birthday Decorations</h4>
+                    <p>Make your birthday extra special</p>
+                </div>
+                <div class="speciality-body">
+                    <div class="speciality-item" onclick="openModal('booking')">
+                        <i class="fas fa-child"></i>
+                        <span>Kid Theme Decoration</span>
+                        <small>Cartoon themes, Superhero</small>
+                    </div>
+                    <div class="speciality-item" onclick="openModal('booking')">
+                        <i class="fas fa-star"></i>
+                        <span>Birthday Decoration</span>
+                        <small>Classic, Modern, Vintage</small>
+                    </div>
+                    <div class="speciality-item" onclick="openModal('booking')">
+                        <i class="fas fa-trending-up"></i>
+                        <span>Trending in Birthday</span>
+                        <small>Latest styles & themes</small>
+                    </div>
+                    <div class="speciality-item" onclick="openModal('booking')">
+                        <i class="fas fa-balloon"></i>
+                        <span>Balloon Decoration</span>
+                        <small>Balloon arches, Columns</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Services -->
+    <section class="services" id="services">
+        <div class="section-title">
+            <h3>Our Event Services</h3>
+            <p style="color: var(--gray); margin-top: 1rem;">Book trusted professionals for your special moments</p>
+        </div>
+        <div class="services-grid" id="servicesGrid">
+            <!-- Services will be loaded via JavaScript -->
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About EventUtsav</h4>
+                <p>Your trusted event booking platform to discover, compare, and book services for all celebrations – from birthdays to weddings, effortlessly and affordably.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#deals">Flash Deals</a></li>
+                    <li><a href="#" onclick="openModal('vendor')">Become a Vendor</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Help & Guide</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">How to Book</a></li>
+                    <li><a href="#">Delivery Info</a></li>
+                    <li><a href="#">Cancellation & Refund</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i>Vijay Nagar, Indore, 452010</li>
+                    <li><i class="fas fa-phone"></i> +91 9302674518</li>
+                    <li><i class="fas fa-envelope"></i> connect@eventutsav.in</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 EventUtsav. All rights reserved. | Terms of Use | Privacy Policy | Disclaimer</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('login')">&times;</span>
+            <h2>Login to EventUtsav</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="Enter your password">
+                </div>
+                <button type="submit" class="btn-submit">Login</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Don't have an account? <a href="#" onclick="switchModal('login', 'register')">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('register')">&times;</span>
+            <h2>Register with EventUtsav</h2>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="regName">Full Name</label>
+                    <input type="text" id="regName" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="regPhone">Phone Number</label>
+                    <input type="tel" id="regPhone" required placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="regType">Register as</label>
+                    <select id="regType">
+                        <option value="customer">Customer</option>
+                        <option value="vendor">Vendor</option>
+                    </select>
+                </div>
+                <!-- Vendor fields will be dynamically added here -->
+                <button type="submit" class="btn-submit">Register</button>
+                <p style="text-align: center; margin-top: 1rem;">
+                    Already have an account? <a href="#" onclick="switchModal('register', 'login')">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('booking')">&times;</span>
+            <h2>Book Your Service</h2>
+            <form id="bookingForm" onsubmit="handleBooking(event)">
+                <div class="form-group">
+                    <label for="serviceType">Service Type</label>
+                    <select id="serviceType" required>
+                        <option value="">Select a service</option>
+                        <option value="Birthday">Birthday Decoration</option>
+                        <option value="Wedding">Wedding Decoration</option>
+                        <option value="Anniversary">Anniversary Decoration</option>
+                        <option value="Baby Shower">Baby Shower</option>
+                        <option value="Haldi">Haldi Ceremony</option>
+                        <option value="Mehendi">Mehendi Ceremony</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Event Date</label>
+                    <input type="date" id="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="guestCount">Number of Guests (approx)</label>
+                    <input type="number" id="guestCount" required min="10" placeholder="e.g., 50">
+                </div>
+                <div class="form-group">
+                    <label for="venueAddress">Venue Address</label>
+                    <textarea id="venueAddress" required placeholder="Enter your venue address" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="specialRequest">Special Requests</label>
+                    <textarea id="specialRequest" rows="3" placeholder="Any specific requirements?"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Proceed to Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Vendor Registration Modal -->
+    <div class="modal" id="vendorModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('vendor')">&times;</span>
+            <h2>Become a Vendor Partner</h2>
+            <form id="vendorForm" onsubmit="handleVendorRegistration(event)">
+                <div class="form-group">
+                    <label for="vendorBusinessName">Business Name</label>
+                    <input type="text" id="vendorBusinessName" required placeholder="Enter your business name">
+                </div>
+                <div class="form-group">
+                    <label for="vendorOwnerName">Owner Name</label>
+                    <input type="text" id="vendorOwnerName" required placeholder="Enter owner's full name">
+                </div>
+                <div class="form-group">
+                    <label for="vendorBusinessEmail">Business Email</label>
+                    <input type="email" id="vendorBusinessEmail" required placeholder="Enter business email">
+                </div>
+                <div class="form-group">
+                    <label for="vendorBusinessPhone">Business Phone</label>
+                    <input type="tel" id="vendorBusinessPhone" required placeholder="Enter business phone">
+                </div>
+                <div class="form-group">
+                    <label for="vendorServiceCategory">Service Category</label>
+                    <select id="vendorServiceCategory" required multiple size="3">
+                        <option value="Decoration">Decoration</option>
+                        <option value="Photography">Photography</option>
+                        <option value="Catering">Catering</option>
+                        <option value="Music">Music/DJ</option>
+                        <option value="Makeup">Makeup/Mehendi</option>
+                    </select>
+                    <small>Hold Ctrl/Cmd to select multiple</small>
+                </div>
+                <div class="form-group">
+                    <label for="vendorGstNumber">GST Number (Optional)</label>
+                    <input type="text" id="vendorGstNumber" placeholder="Enter GST number">
+                </div>
+                <button type="submit" class="btn-submit">Submit for Verification</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div class="modal" id="dashboardModal">
+        <!-- Content will be dynamically loaded -->
+    </div>
+
+    <!-- Back to top button -->
+    <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="interface.js"></script>
+</body>
+</html>
