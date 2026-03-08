@@ -155,6 +155,8 @@ MongoDB for excellent documentation
 
 React community for amazing tools
 
+Part of Symbiosis Skill Hackathon
+
 All contributors and testers
 
 Caution : The website has been created using ai tools and teams brainstorming 
